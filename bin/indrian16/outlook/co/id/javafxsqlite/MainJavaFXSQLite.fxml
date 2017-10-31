@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="indrian16.outlook.co.id.javafxsqlite.MainJavaFXSQLiteCon">
+   <children>
+      <TextField fx:id="username" layoutX="54.0" layoutY="76.0" promptText="username" />
+      <PasswordField fx:id="password" layoutX="54.0" layoutY="101.0" promptText="password" />
+      <Button fx:id="login" layoutX="135.0" layoutY="126.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="68.0" text="Login" />
+      <Label fx:id="status" layoutX="20.0" layoutY="325.0" prefHeight="25.0" prefWidth="225.0" />
+   </children>
+</AnchorPane>
