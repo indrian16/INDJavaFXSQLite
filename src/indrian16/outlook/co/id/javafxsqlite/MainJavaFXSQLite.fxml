@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="indrian16.outlook.co.id.javafxsqlite.MainJavaFXSQLiteCon">
    <children>
-      <TextField fx:id="username" layoutX="54.0" layoutY="76.0" promptText="username" />
-      <PasswordField fx:id="password" layoutX="54.0" layoutY="101.0" promptText="password" />
-      <Button fx:id="login" layoutX="135.0" layoutY="126.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="68.0" text="Login" />
-      <Label fx:id="status" layoutX="20.0" layoutY="325.0" prefHeight="25.0" prefWidth="225.0" />
+      <Label fx:id="status" layoutX="20.0" layoutY="325.0" prefHeight="45.0" prefWidth="225.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <VBox layoutX="150.0" layoutY="120.0" prefHeight="161.0" prefWidth="300.0" spacing="10.0">
+         <children>
+            <TextField fx:id="username" prefHeight="45.0" prefWidth="300.0" promptText="username">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="password" prefHeight="45.0" prefWidth="300.0" promptText="password">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="login" mnemonicParsing="false" onAction="#login" prefHeight="45.0" prefWidth="100.0" text="Login">
+               <VBox.margin>
+                  <Insets left="200.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

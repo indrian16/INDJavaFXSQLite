@@ -6,11 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * 	@author @Rian OR @Indrian;
+ * 	@version 1.0.0;
+ * 	@Date 11/1/2017(Format(M/D/Y);
+ * 
+ * */
+
 public class MainJavaFXSQLite extends Application {
 	
-	public static void main(String[] args) throws ClassNotFoundException {
-		ConnectionSQLite app = new ConnectionSQLite();
-		app.connectionDB();
+	public static void main(String[] args) {
 		launch(args);
 	}
 	

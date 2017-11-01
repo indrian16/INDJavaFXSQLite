@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class LoginModel {
 	
-	public boolean validateLogin(String username, String password) throws ClassNotFoundException {
+	public boolean validateLogin(String username, String password) {
 		
 		String sql = "SELECT * FROM login WHERE username = ? and password = ?";
 		

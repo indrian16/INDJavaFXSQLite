@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionSQLite {
 	
-	public Connection connectionDB() throws ClassNotFoundException {
+	public Connection connectionDB() {
 		
 		String url = "jdbc:sqlite:database/indrianData.sqlite";
 		Connection conn = null;
@@ -14,9 +14,10 @@ public class ConnectionSQLite {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			conn = DriverManager.getConnection(url);
-			System.out.println("Success Connection DB");
 			
 		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+		} catch(ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
 		return conn;
