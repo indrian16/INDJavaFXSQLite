@@ -24,15 +24,35 @@
                   <Font size="20.0" />
                </font>
             </PasswordField>
-            <Button fx:id="login" mnemonicParsing="false" onAction="#login" prefHeight="45.0" prefWidth="100.0" text="Login">
-               <VBox.margin>
-                  <Insets left="200.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
+            <HBox prefHeight="100.0" prefWidth="300.0" spacing="80.0">
+               <children>
+                  <Hyperlink fx:id="signup" onAction="#signup" prefHeight="40.0" prefWidth="107.0" text="Sign Up?">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Hyperlink>
+                  <Button fx:id="login" mnemonicParsing="false" onAction="#login" prefHeight="45.0" prefWidth="100.0" text="Login">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
          </children>
       </VBox>
+      <Label layoutX="20.0" layoutY="26.0" prefHeight="40.0" prefWidth="245.0" text="IND Application [SQLite]" textFill="#5e1a1a">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
