@@ -47,17 +47,21 @@ public class SignUpC implements Initializable {
 		
 		LoginModel loginModel = new LoginModel();
 		
-		if (username.getText().length() < 3) {
-			inValidUser.setText("Username error");
+		
+		
+		if (inputUsername.length() < 3) {
+			inValidUser.setText("At least 3 characters");
 			inValidUser.setTextFill(Color.RED);
+			
 			return;
 		}
-		if (password.getText().length() < 3) {
+		if (inputPassword.length() < 3) {
 			inValidUser.setText("");
-			inValidPassword.setText("Password error");
+			inValidPassword.setText("At least 3 characters");
 			inValidPassword.setTextFill(Color.RED);
 			return;
 		}
+		
 		if (loginModel.validateLogin(inputUsername, inputUsername)) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Failed Register");
@@ -86,44 +90,75 @@ public class SignUpC implements Initializable {
 		String sql = "INSERT INTO login(username, password)"
 				+ "VALUES(?,?);";
 		
-		try (Connection conn = connDB.connectionDB();
-				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		if (inputUsername.matches("[0-9]*") || inputPassword.matches("[0-9]*")) {
 			
-			pstmt.setString(1, inputUsername);
-			pstmt.setString(2, inputPassword);
-			pstmt.executeUpdate();
-			
-		} catch(SQLException e) {
-			System.out.println(e.getMessage());
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Fatal Error");
+			alert.setTitle("Fail Input");
 			alert.setHeaderText("Welcome IND Application");
-			alert.setContentText("Fill correctly");
+			alert.setContentText("Can not fill all integer");
+			alert.showAndWait();
 			
 			inValidUser.setText("");
 			inValidPassword.setText("");
 			username.setText("");
 			password.setText("");
-		}
-		
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Success Register");
-		alert.setHeaderText("Welcome IND Application");
-		alert.setContentText("You will be on move main course");
-		
-		Optional<ButtonType> ok = alert.showAndWait();
-		if (ok.get() == ButtonType.OK) {
-			Stage stage = (Stage) MainJavaFXSQLite.primaryStage.getScene().getWindow();
-			stage.show();
-			submit.getScene().getWindow().hide();
+			
+			return;
 		} else {
-			System.out.println("no");
+			try (Connection conn = connDB.connectionDB();
+					PreparedStatement pstmt = conn.prepareStatement(sql)) {
+				
+				
+				pstmt.setString(1, inputUsername);
+				pstmt.setString(2, inputPassword);
+				pstmt.executeUpdate();
+				
+			} catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Success Register");
+			alert.setHeaderText("Welcome IND Application");
+			alert.setContentText("[Success] You will be on move main course");
+			
+			Optional<ButtonType> ok = alert.showAndWait();
+			if (ok.get() == ButtonType.OK) {
+				Stage stage = (Stage) MainJavaFXSQLite.primaryStage.getScene().getWindow();
+				stage.show();
+				submit.getScene().getWindow().hide();
+			} else {
+				System.out.println("no");
+			}
 		}
+		
 		
 	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		
+		username.focusedProperty().addListener((arg0, oldValue, newValue) -> {
+			
+			if (!newValue) {
+				if (username.getText().matches("[0-9]*") || (username.getText().length() < 3)) {
+					username.setStyle("-fx-border-color: red");
+				} else {
+					username.setStyle("-fx-border-color: green");
+				}
+			}
+		});
+		
+		password.focusedProperty().addListener((arg0, oldValue, newValue) -> {
+			
+			if (!newValue) {
+				if (password.getText().matches("[0-9]*") || (password.getText().length() < 3)) {
+					password.setStyle("-fx-border-color: red");
+				} else {
+					password.setStyle("-fx-border-color: green");
+				}
+			}
+		});
 	}
 
 }
